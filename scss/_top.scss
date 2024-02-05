@@ -57,7 +57,7 @@ button {
     right: 300px; //ナビゲーション分
   }
 
-  animation: fadein 4s ease-in forwards;
+  animation: fadein 3.5s ease-in forwards;
 }
 
 @keyframes fadein {
@@ -69,6 +69,7 @@ button {
     transform: translateY(0);
   }
 }
+
 /* ------- 各セクション共通スタイル ------- */
 .section {
   &-container {
@@ -81,9 +82,7 @@ button {
     font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center-center;
     margin-bottom: 56px;
   }
 
@@ -121,7 +120,7 @@ h5 {
     width: 250px;
     height: 80px;
     background: var(--color-main);
-    color: #fff;
+    color: var(--color-white);
     border-radius: 16px;
     font-size: 1.2rem;
     font-weight: 400;
@@ -180,9 +179,7 @@ h5 {
   }
 
   @include mq {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center-center;
 
     &__logo {
       text-align: center;
@@ -246,7 +243,7 @@ h5 {
           text-decoration: none; //下線をなくす
           font-size: 1.3rem; //少し大きく
           text-transform: uppercase; //大文字にする
-          letter-spacing: 3px;
+          letter-spacing: 0.25em;
           font-weight: 400;
         }
       }
@@ -353,9 +350,7 @@ h5 {
   z-index: 300; //手前に持ってくる
   top: 14px; //上からの位置
   right: 14px; //右からの位置
-  display: flex; //子要素の3つを中央に表示させるため
-  justify-content: center; //中央
-  align-items: center; //中央
+  @include flex-center-center;
 
   //spanにアニメーションをかけたいのでlabelにbefore,afterをかける
   &::before,
@@ -563,10 +558,8 @@ h5 {
   display: flex;
   flex-direction: column;
   &__wrapper {
-    display: flex;
-    flex-direction: column;
+    @include flex-center-column;
     text-align: center;
-    align-items: center;
     justify-content: center;
     margin-bottom: 80px;
 
@@ -745,15 +738,11 @@ h5 {
   width: 100%;
   height: 400px;
   background: var(--color-main);
-  display: flex;
-  justify-content: center; // 水平方向の中央揃え
-  align-items: center; // 垂直方向の中央揃え
+  @include flex-center-center;
   text-align: center; // テキストを中央揃え
 
   &__content {
-    display: flex;
-    flex-direction: column; // 要素を縦に並べる
-    align-items: center; // 子要素を垂直方向の中央に揃える
+    @include flex-center-column;
 
     a,
     small,
