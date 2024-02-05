@@ -55,8 +55,19 @@ ol {
     position: absolute;
     right: 300px;
   }
+
+  animation: fadein 2s ease-in forwards;
 }
 
+@keyframes fadein {
+  0% {
+    transform: translateY(110vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
 /* ------- 各セクション共通スタイル ------- */
 .section {
   &-container {
