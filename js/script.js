@@ -1,98 +1,17 @@
-//FAQトグル用
-document.querySelectorAll('.faq__button').forEach((button) => {
-  button.addEventListener('click', () => {
-    const toggleContent = button.nextElementSibling;
-
-    if (toggleContent.style.display === 'block') {
-      toggleContent.style.display = 'none';
-    } else {
-      toggleContent.style.display = 'block';
-    }
+//slickを動かすためのコード
+$(document).ready(function () {
+  $('.slide').slick({
+    dots: false,
+    // infinite: true,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    fade: true,
+    cssEase: 'linear',
+    arrows: false,
   });
 });
-
-/* -- slide -- */
-/*
-var $slide = $('.slide')
-  .slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: true,
-    speed: 2000,
-    autoplaySpeed: 4000,
-    autoplay: true,
-  })
-  .on({
-    beforeChange: function (event, slick, currentSlide, nextSlide) {
-      $('.slick-slide', this).eq(currentSlide).addClass('preve-slide');
-      $('.slick-slide', this).eq(nextSlide).addClass('slide-animation');
-    },
-    afterChange: function () {
-      $('.preve-slide', this).removeClass('preve-slide slide-animation');
-    },
-  });
-$slide.find('.slick-slide').eq(0).addClass('slide-animation');
-*/
-
-// スライダーの初期化関数
-function initResponsiveSlider() {
-  // スマートフォン用スライダーの設定
-  if ($(window).width() < 768) {
-    // PC用スライダーが初期化されている場合は破棄
-    if ($('.slide-pc').hasClass('slick-initialized')) {
-      $('.slide-pc').slick('unslick');
-    }
-    // スマートフォン用スライダーを初期化
-    if (!$('.slide').hasClass('slick-initialized')) {
-      $('.slide')
-        .slick({
-          infinite: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          fade: true,
-          speed: 2000,
-          autoplaySpeed: 4000,
-          autoplay: true,
-        })
-        .on({
-          beforeChange: function (event, slick, currentSlide, nextSlide) {
-            $('.slick-slide', this).eq(currentSlide).addClass('preve-slide');
-            $('.slick-slide', this).eq(nextSlide).addClass('slide-animation');
-          },
-          afterChange: function () {
-            $('.preve-slide', this).removeClass('preve-slide slide-animation');
-          },
-        });
-      $('.slide').find('.slick-slide').eq(0).addClass('slide-animation');
-    }
-  } else {
-    // スマートフォン用スライダーが初期化されている場合は破棄
-    if ($('.slide').hasClass('slick-initialized')) {
-      $('.slide').slick('unslick');
-    }
-    // PC用スライダーを初期化
-    if (!$('.slide-pc').hasClass('slick-initialized')) {
-      $('.slide-pc').slick({
-        // PC用スライダーの設定をここに追加
-        // 例:
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        autoplay: true,
-        autoplaySpeed: 6000,
-      });
-    }
-  }
-}
-
-// ドキュメントが読み込まれた時とウィンドウがリサイズされた時にスライダーを初期化
-$(document).ready(initResponsiveSlider);
-$(window).resize(initResponsiveSlider);
 
 /* -- ナビゲーションclose -- */
 document.addEventListener('DOMContentLoaded', function () {
@@ -158,3 +77,54 @@ year.textContent = date.getFullYear();
 console.log(date.getFullYear()); //年を取得
 console.log(date.getDay()); //曜日を取得
 console.log(date.getHours()); //時を取得
+
+//セクション表示状態の監視
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.querySelector(`a[href="#${entry.target.id}"]`).classList.add('active');
+        } else {
+          document.querySelector(`a[href="#${entry.target.id}"]`).classList.remove('active');
+        }
+      });
+    },
+    {
+      rootMargin: '-50% 0px -50% 0px',
+    }
+  );
+
+  // 監視対象のセクションを追加
+  document.querySelectorAll('section').forEach((section) => {
+    observer.observe(section);
+  });
+});
+
+//FAQトグル用
+document.querySelectorAll('.faq__button').forEach((button) => {
+  button.addEventListener('click', () => {
+    const toggleContent = button.nextElementSibling;
+
+    if (toggleContent.style.display === 'block') {
+      toggleContent.style.display = 'none';
+    } else {
+      toggleContent.style.display = 'block';
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var toTopLink = document.querySelector('.to-top a');
+
+  toTopLink.addEventListener('click', function (e) {
+    // デフォルトのアンカー動作を防止
+    e.preventDefault();
+
+    // スムーズスクロールを実行
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+});

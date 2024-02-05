@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* ------- モバイルファースト ------- */
 /* ------- リセット ------- */
 *,
 *::before,
@@ -117,6 +116,22 @@ h5 {
   background: var(--color-accent);
   cursor: pointer;
   transition: 0.5s;
+}
+
+/* ------- To top  ------- */
+.to-top {
+  position: fixed;
+  bottom: 20px; /* 下端から20pxの位置 */
+  right: 30px; /* 右端から20pxの位置 */
+  z-index: 200; /* 他の要素の上に表示 */
+}
+.to-top img {
+  width: 24px;
+}
+@media screen and (min-width: 768px) {
+  .to-top {
+    right: 330px;
+  }
 }
 
 /* ------- ヘッダー・ロゴ ------- */
@@ -249,7 +264,7 @@ h5 {
     transition: transform 0.3s var(--easeing);
     transform-origin: right center;
   }
-  .site-nav__content-nav a:hover::after {
+  .site-nav__content-nav a:hover::after, .site-nav__content-nav a.active::after {
     transform: scaleX(1);
     transform-origin: left center;
   }
@@ -347,6 +362,8 @@ h5 {
 /* ------- ./ハンバーガーボタン ------- */
 /* ------- slide ------- */
 .slide {
+  visibility: visible !important;
+  opacity: 1 !important;
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -361,8 +378,8 @@ h5 {
      object-fit: cover;
 }
 @media screen and (min-width: 768px) {
-  .slide {
-    display: none;
+  .slide__img img {
+    width: 100%;
   }
 }
 
@@ -379,27 +396,6 @@ h5 {
   }
 }
 /* ------- ./slide ------- */
-.slide-pc {
-  display: none;
-}
-@media screen and (min-width: 768px) {
-  .slide-pc {
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: -2;
-  }
-  .slide-pc__img {
-    height: 100vh;
-    width: auto;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-}
-
 /* ------- Footer ------- */
 .site-footer {
   width: 100%;

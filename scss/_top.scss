@@ -123,6 +123,21 @@ h5 {
   }
 }
 
+/* ------- To top  ------- */
+.to-top {
+  position: fixed;
+  bottom: 20px; /* 下端から20pxの位置 */
+  right: 30px; /* 右端から20pxの位置 */
+  z-index: 200; /* 他の要素の上に表示 */
+  img {
+    width: 24px;
+  }
+
+  @include mq {
+    right: 330px;
+  }
+}
+
 /* ------- ヘッダー・ロゴ ------- */
 .site-header {
   left: 0;
@@ -267,7 +282,8 @@ h5 {
             transform-origin: right center;
           }
 
-          &:hover::after {
+          &:hover::after,
+          &.active::after {
             transform: scaleX(1);
             transform-origin: left center;
           }
@@ -383,6 +399,8 @@ h5 {
 
 /* ------- slide ------- */
 .slide {
+  visibility: visible !important;
+  opacity: 1 !important;
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -395,11 +413,11 @@ h5 {
       height: 100vh;
       width: auto;
       object-fit: cover;
-    }
-  }
 
-  @include mq {
-    display: none;
+      @include mq {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -415,26 +433,6 @@ h5 {
   }
 }
 /* ------- ./slide ------- */
-
-.slide-pc {
-  display: none;
-
-  @include mq {
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: -2; // とテキストが前面に来るように
-
-    &__img {
-      height: 100vh;
-      width: auto;
-      object-fit: cover;
-    }
-  }
-}
 
 /* ------- Footer ------- */
 .site-footer {
