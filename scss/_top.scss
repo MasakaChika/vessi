@@ -54,7 +54,7 @@ button {
   @include mq {
     display: flex;
     position: absolute;
-    right: 300px;
+    right: 300px; //ナビゲーション分
   }
 
   animation: fadein 4s ease-in forwards;
@@ -327,11 +327,11 @@ h5 {
             scale: 1.2;
           }
           &::before {
+            content: '';
             transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
             position: absolute;
             inset: -4px 0 4px 0;
             display: block;
-            content: '';
             background: var(--color-main);
             border-radius: 50%;
             z-index: -3;
@@ -445,9 +445,7 @@ h5 {
     width: 100%;
     height: 100px;
     background: var(--color-main);
-    display: flex; //flexをかける
-    justify-content: center; //
-    align-items: center; //
+    @include flex-center-center;
 
     img {
       width: 100px;
@@ -465,13 +463,13 @@ h5 {
 
     h2 {
       font-size: 2rem;
-      letter-spacing: 5px;
+      letter-spacing: 0.3em;
       margin-bottom: 1rem;
     }
     p {
       font-size: 1rem;
       font-weight: 500;
-      letter-spacing: 1px;
+      letter-spacing: 0.1em;
     }
   }
 
@@ -479,12 +477,10 @@ h5 {
     position: absolute;
     width: 100%;
     bottom: 20%;
-    display: flex; //flexをかける
-    justify-content: center; //
-    align-items: center; //
+    @include flex-center-center;
 
     &-text {
-      letter-spacing: 3px;
+      letter-spacing: 0.2em;
       font-size: 0.7rem;
       text-transform: uppercase;
     }
@@ -495,7 +491,7 @@ h5 {
       top: 30px;
       left: 50%;
       width: 2px;
-      height: 80px;
+      height: 100px;
       overflow: hidden;
       background-color: var(--color-main);
 
@@ -503,7 +499,7 @@ h5 {
         content: '';
         position: absolute;
         width: 2px;
-        height: 80px;
+        height: 100px;
         background-color: var(--color-background);
         animation: scrolldown 1.4s ease-in-out infinite;
 
@@ -533,7 +529,7 @@ h5 {
         top: 20px;
         right: 1rem;
         color: var(--color-white);
-        letter-spacing: 3px;
+        letter-spacing: 0.2em;
         font-size: 24px;
         font-weight: 500;
         text-align: end; //文字を右寄せにする
@@ -547,10 +543,10 @@ h5 {
         bottom: 240px;
         left: 1rem;
         color: var(--color-white);
-        letter-spacing: 3px;
+        letter-spacing: 0.2em;
         font-size: 24px;
         font-weight: 500;
-        text-align: start; //文字を右寄せにする
+        text-align: start; //文字を左寄せにする
       }
     }
 
