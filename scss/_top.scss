@@ -79,7 +79,7 @@ button {
   &-title {
     font-size: 24px;
     font-weight: 400;
-    letter-spacing: 10px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -552,7 +552,7 @@ h5 {
 
     &-desc {
       p {
-        letter-spacing: 2px;
+        letter-spacing: 0.2em;
         font-size: 14px;
       }
     }
@@ -686,7 +686,7 @@ h5 {
 
   p {
     margin-bottom: 32px; // 段落要素間に余白を追加
-    letter-spacing: 2px;
+    letter-spacing: 0.1em;
     line-height: 1.6;
   }
 
