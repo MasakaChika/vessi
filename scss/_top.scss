@@ -1,0 +1,792 @@
+@use './mixins' as *;
+
+/* ------- リセット ------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------- 共通 ------- */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--color-background);
+}
+
+html {
+  font-size: 16px;
+}
+
+main {
+  margin: 0 auto;
+  padding: 0;
+  @include mq {
+    max-width: var(--container-width);
+  }
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  color: var(--color-text);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.scroll-container {
+  background: var(--color-background);
+  max-width: var(--container-width);
+
+  @include mq {
+    display: flex;
+    position: absolute;
+    right: 300px;
+  }
+}
+
+.section {
+  &-container {
+    max-width: var(--container-width);
+    padding: 200px 24px;
+  }
+
+  &-title {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+
+  &-subtitle {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 3px;
+  }
+}
+
+h5 {
+  letter-spacing: 0.5px;
+  font-size: 1rem;
+}
+
+@include mq {
+  .layout {
+    display: flex;
+  }
+}
+
+/* ------- ヘッダー ------- */
+.site-header {
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+
+  // logo
+  &__logo {
+    img {
+      width: 80%;
+    }
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+  }
+
+  @include mq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__logo {
+      text-align: center;
+
+      img {
+        width: 40%;
+      }
+    }
+
+    p {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 24px;
+    }
+  }
+}
+
+/* ------- ナビゲーション ------- */
+
+.site-nav__container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 4;
+
+  @include mq {
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    top: 0;
+    right: 300px;
+    left: auto;
+  }
+}
+
+/* ------- ナビゲーション ------- */
+.site-nav {
+  &__content {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex; //横並びになる
+    flex-direction: column; //縦に配置される
+    justify-content: center; //主軸の中央になる
+    align-items: center; //横軸の中央
+    transform: translateX(100%); //隠しておく
+    transition: 0.8s var(--easeing); //表示させるときのアニメーション
+
+    .site-nav-checkbox:checked ~ & {
+      transform: translateX(0); //表示させる
+    }
+
+    //navigation
+    &-nav {
+      text-align: center; //文字が中央揃えになる
+
+      display: flex; //aling-itemsをかけるため
+      flex-direction: column;
+      align-items: center; //上に上がったため中央に配置する
+
+      li {
+        margin-bottom: 2rem; //2文字文 bodyのフォントサイズ remでもいい
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          color: var(--color-white); //aにかけないと反映されない
+          text-decoration: none; //下線をなくす
+          font-size: 1.3rem; //タップしやすくするため少し大きくした
+          text-transform: uppercase; //大文字にする
+          letter-spacing: 3px;
+          font-weight: 400;
+        }
+      }
+
+      @include mq {
+        text-align: start;
+      }
+    }
+
+    &-shop {
+      display: flex;
+      justify-content: center;
+      margin: 2rem auto;
+
+      img {
+        width: 140px;
+
+        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
+      }
+    }
+
+    //sns
+    &-sns {
+      display: flex;
+      // position: absolute; //BOTANICAL
+      // inset: auto 0 5.6rem;
+      justify-content: center;
+      gap: 1.5rem;
+
+      img {
+        width: 24px;
+      }
+    }
+  }
+
+  @include mq {
+    &__contet {
+      position: static;
+      transform: translateX(0) !important; //必ず行うという指示
+      display: flex;
+      flex-direction: column;
+
+      &-nav {
+        align-items: flex-start; //上端に揃える
+        text-align: start; //昔はleft rightだったが今は
+        padding: 0 15px; //左に寄せる
+
+        li {
+          margin-bottom: 1.5rem;
+        }
+
+        a {
+          font-size: 1rem; //初期設定の14pxに戻す
+          position: relative; //afterのabsoluteの為にrelativeをかける
+          display: inline-block; //テキストの下に余白を作るためblockレベル要素にするblockだけにすると横に要素のエリアが広がる
+          padding-bottom: 3px;
+
+          &::after {
+            content: '';
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            background-color: var(--color-primary);
+            left: 0;
+            bottom: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s var(--easeing); //animetionを追加
+            transform-origin: right center; //
+          }
+
+          //hoverした時の::after
+          &:hover::after {
+            transform: scaleX(1);
+            transform-origin: left center; //
+          }
+        }
+        &-sns {
+          justify-content: center;
+          align-items: flex-end;
+          padding-bottom: 30px;
+
+          a {
+            // margin: 0 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            text-decoration: none;
+
+            &:hover::before {
+              scale: 1;
+            }
+            &::before {
+              transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+              position: absolute;
+              inset: 0;
+              display: block;
+              content: '';
+              background: var(--color-accent);
+              border-radius: 50%;
+              z-index: -3;
+              scale: 0;
+              pointer-events: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* ------- ./ナビゲーション ------- */
+
+/* ------- ハンバーガーボタン ------- */
+.site-nav-toggle {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  z-index: 300; //手前に持ってくる
+  top: 14px; //上からの位置
+  right: 14px; //右からの位置
+  display: flex; //子要素の3つを中央に表示させるため
+  justify-content: center; //中央
+  align-items: center; //中央
+
+  //spanにアニメーションをかけたいのでlabelにbefore,afterをかける
+  &::before,
+  &::after,
+  span {
+    content: '';
+    height: 2px;
+    width: 40px;
+    background-color: var(--color-white);
+    position: absolute; //重なって左上にまとまる=>親にflex以下をかける
+    transition: 0.4s var(--easeing); //span:transform記述=>動きをつけておく
+  }
+
+  span {
+    transform-origin: left center; //transformの基準点を変える=>真ん中の線の挙動
+  }
+
+  &::before {
+    top: calc(50% - 12px); //topで真ん中からどれくらいか指定する
+  }
+
+  &::after {
+    top: calc(50% + 12px);
+  }
+
+  .site-nav-checkbox:checked ~ & {
+    span {
+      transform: scaleX(0); //scaleは比率を書く
+    }
+    &::before {
+      top: 50%; //=>中央に戻す
+      transform: rotate(45deg); //45°回転する
+      background-color: var(--color-white);
+    }
+
+    &::after {
+      top: 50%;
+      transform: rotate(-45deg);
+      background-color: var(--color-white);
+    }
+  }
+
+  /* ------- pc ------- */
+  @include mq {
+    display: none;
+  }
+}
+
+.site-nav-checkbox {
+  display: none;
+}
+/* ------- ./ハンバーガーボタン ------- */
+
+/* ------- slide ------- */
+.slide {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -2; // とテキストが前面に来るように
+
+  &__img {
+    img {
+      height: 100vh;
+      width: auto;
+      object-fit: cover;
+    }
+  }
+
+  @include mq {
+    display: none;
+  }
+}
+
+.slide-animation {
+  animation: fadezoom 8s 0s forwards;
+}
+@keyframes fadezoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+/* ------- ./slide ------- */
+
+.slide-pc {
+  display: none;
+
+  @include mq {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -2; // とテキストが前面に来るように
+
+    &__img {
+      height: 100vh;
+      width: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+/* ------- Footer ------- */
+.site-footer {
+  width: 100%;
+  height: 400px;
+  background: var(--color-main);
+  display: flex;
+  justify-content: center; // 水平方向の中央揃え
+  align-items: center; // 垂直方向の中央揃え
+  text-align: center; // テキストを中央揃え
+
+  &__content {
+    display: flex;
+    flex-direction: column; // 要素を縦に並べる
+    align-items: center; // 子要素を垂直方向の中央に揃える
+
+    a,
+    small,
+    span {
+      color: var(--color-white);
+    }
+    a {
+      text-decoration: none;
+    }
+    small {
+      margin-top: 10px; // プライバシーポリシーのリンクと著作権情報の間に少しスペースを作る
+    }
+  }
+}
+
+.main-visual {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-width);
+  height: 100vh;
+  left: 0;
+  top: 0;
+
+  &__header {
+    width: 100%;
+    height: 100px;
+    background: var(--color-main);
+    display: flex; //flexをかける
+    justify-content: center; //
+    align-items: center; //
+
+    img {
+      width: 100px;
+    }
+  }
+  &__title {
+    display: flex;
+
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    padding-left: 24px;
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: 5px;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    width: 100%;
+    bottom: 20%;
+    display: flex; //flexをかける
+    justify-content: center; //
+    align-items: center; //
+
+    &-text {
+      letter-spacing: 3px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    &-line {
+      position: absolute;
+      margin-top: 1rem;
+      top: 30px;
+      left: 50%;
+      width: 2px;
+      height: 80px;
+      overflow: hidden;
+      background-color: var(--color-main);
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 80px;
+        background-color: var(--color-background);
+        animation: scrolldown 1.4s ease-in-out infinite;
+
+        @keyframes scrolldown {
+          0% {
+            transform: translateY(-100%);
+          }
+
+          100% {
+            transform: translateY(100%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.tec {
+  &__container {
+    margin-top: 64px;
+
+    &-top {
+      position: relative;
+
+      &-heading {
+        position: absolute;
+        top: 20px;
+        right: 1rem;
+        color: var(--color-white);
+        letter-spacing: 3px;
+        font-size: 24px;
+        font-weight: 500;
+        text-align: end; //文字を右寄せにする
+      }
+    }
+    &-bottom {
+      position: relative;
+
+      &-heading {
+        position: absolute;
+        bottom: 240px;
+        left: 1rem;
+        color: var(--color-white);
+        letter-spacing: 3px;
+        font-size: 24px;
+        font-weight: 500;
+        text-align: start; //文字を右寄せにする
+      }
+    }
+
+    &-desc {
+      p {
+        letter-spacing: 2px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.producuts {
+  display: flex;
+  flex-direction: column;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 100px;
+      margin: 24px 0;
+    }
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 0.975rem;
+    }
+  }
+}
+
+/* ------- swiperの設定 ------- */
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+
+  &-wrapper {
+    width: 100%;
+    top: 0;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    box-sizing: content-box;
+    transition-property: transform;
+  }
+
+  &-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative; //textの為
+  }
+  &-item {
+    position: relative; //相対位置に指定
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-txt {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    padding: 5px;
+    p {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+  }
+
+  &-pagination-bullet {
+    width: 4px; //paginationのサイズ変更
+    height: 4px;
+    margin: 0 8px !important; //paginationの間隔変更
+    background-color: var(--color-main); //main-colorに変更
+  }
+}
+.sample-slider img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+// .swiper-slide {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   height: 100%;
+
+//   img {
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// }
+
+//onlineshop
+.online-shop {
+  display: flex;
+  margin: 0 auto;
+  background: url(../img/bg_warter.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%; //不要レイアウト変化なし
+  height: 200px;
+  position: relative; //不要レイアウト変化なし
+  align-items: center;
+
+  img {
+    position: absolute;
+    width: 140px;
+    left: 32px;
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.7));
+  }
+}
+
+//story
+.story {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; // Flexboxのgapプロパティを使用して、要素間に20pxのスペースを追加
+    margin: 24px 0;
+
+    > *:first-child {
+      margin-top: 0; // 最初の子要素の上マージンを取り除く
+    }
+    > *:last-child {
+      margin-bottom: 0; // 最後の子要素の下マージンを取り除く
+    }
+  }
+  h5 {
+    margin-bottom: 16px; // 最初の要素に余白を追加
+  }
+
+  p {
+    margin-bottom: 32px; // 段落要素間に余白を追加
+    letter-spacing: 2px;
+    line-height: 1.6;
+  }
+
+  img {
+    margin: 32px 0;
+  }
+}
+
+.faq {
+  &__content {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &-title {
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    &-instructions {
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    &-note {
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: flex-start; //左寄せ
+    align-items: center; //垂直中央に配置
+    width: 100%;
+    padding: 2rem 0;
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    font-family: var(--font-primary);
+    text-decoration: none;
+  }
+
+  &__open {
+    transform: rotate(-90deg); //初期状態
+    transition: transform 0.3s ease-out;
+
+    width: 20px; // サイズ調整、必要に応じて
+    height: 20px; // サイズ調整、必要に応じて
+    margin-right: 1rem;
+  }
+}
