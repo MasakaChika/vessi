@@ -95,3 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
 });
+
+//aos設定
+AOS.init({
+  offset: 0,
+});
