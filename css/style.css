@@ -238,9 +238,10 @@ h5 {
 }
 .site-nav__content-shop {
   margin: 2rem;
+  flex: 1;
 }
 .site-nav__content-sns {
-  margin: 60px 40px 0;
+  margin: auto;
   display: flex;
   gap: 1rem;
   flex: 1;

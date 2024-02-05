@@ -251,10 +251,11 @@ h5 {
 
     &-shop {
       margin: 2rem;
+      flex: 1;
     }
 
     &-sns {
-      margin: 60px 40px 0;
+      margin: auto;
       display: flex;
       gap: 1rem;
       flex: 1;
