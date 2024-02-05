@@ -45,6 +45,7 @@ ol {
   list-style: none;
 }
 
+/* ------- 格納用コンテナ ------- */
 .scroll-container {
   background: var(--color-background);
   max-width: var(--container-width);
@@ -56,6 +57,7 @@ ol {
   }
 }
 
+/* ------- 各セクション共通スタイル ------- */
 .section {
   &-container {
     max-width: var(--container-width);
@@ -87,13 +89,41 @@ h5 {
   font-size: 1rem;
 }
 
+/* ------- Desktop用の設定 ------- */
 @include mq {
   .layout {
     display: flex;
   }
 }
 
-/* ------- ヘッダー ------- */
+/* ------- online shop ------- */
+.btn {
+  text-align: center; //中央に配置
+
+  span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 80px;
+    background: var(--color-main);
+    color: #fff;
+    border-radius: 16px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      background: var(--color-accent);
+      cursor: pointer;
+      transition: 0.5s;
+    }
+  }
+}
+
+/* ------- ヘッダー・ロゴ ------- */
 .site-header {
   left: 0;
   top: 0;
@@ -102,7 +132,6 @@ h5 {
   height: 100vh;
   position: fixed;
 
-  // logo
   &__logo {
     img {
       width: 80%;
@@ -115,7 +144,7 @@ h5 {
     color: var(--color-white);
     font-size: 1.3rem;
     font-weight: 300;
-    letter-spacing: 3px;
+    letter-spacing: 0.2em;
   }
 
   @include mq {
@@ -136,12 +165,14 @@ h5 {
       top: 0;
       left: 0;
       margin: 24px;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.5em;
     }
   }
 }
 
 /* ------- ナビゲーション ------- */
-
 .site-nav__container {
   position: fixed;
   width: 100%;
@@ -151,10 +182,8 @@ h5 {
   z-index: 4;
 
   @include mq {
-    position: fixed;
     width: 300px;
     height: 100vh;
-    top: 0;
     right: 300px;
     left: auto;
   }
@@ -164,66 +193,46 @@ h5 {
 .site-nav {
   &__content {
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex; //横並びになる
-    flex-direction: column; //縦に配置される
     justify-content: center; //主軸の中央になる
-    align-items: center; //横軸の中央
     transform: translateX(100%); //隠しておく
-    transition: 0.8s var(--easeing); //表示させるときのアニメーション
+    transition: 0.6s var(--easeing); //表示させるときのアニメーション
+    @include flex-center-column;
 
     .site-nav-checkbox:checked ~ & {
       transform: translateX(0); //表示させる
     }
 
-    //navigation
     &-nav {
+      margin-top: 100px;
       text-align: center; //文字が中央揃えになる
-
-      display: flex; //aling-itemsをかけるため
-      flex-direction: column;
-      align-items: center; //上に上がったため中央に配置する
 
       li {
         margin-bottom: 2rem; //2文字文 bodyのフォントサイズ remでもいい
 
-        &:last-child {
-          margin-bottom: 0;
-        }
-
         a {
-          color: var(--color-white); //aにかけないと反映されない
+          color: var(--color-white);
           text-decoration: none; //下線をなくす
-          font-size: 1.3rem; //タップしやすくするため少し大きくした
+          font-size: 1.3rem; //少し大きく
           text-transform: uppercase; //大文字にする
           letter-spacing: 3px;
           font-weight: 400;
         }
       }
-
-      @include mq {
-        text-align: start;
-      }
     }
 
     &-shop {
-      display: flex;
-      justify-content: center;
-      margin: 2rem auto;
-
+      margin: 2rem;
       img {
         width: 140px;
-
         filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
       }
     }
 
-    //sns
     &-sns {
+      margin: 60px 40px 0;
       display: flex;
-      // position: absolute; //BOTANICAL
-      // inset: auto 0 5.6rem;
-      justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
+      flex: 0.5;
 
       img {
         width: 24px;
@@ -232,23 +241,15 @@ h5 {
   }
 
   @include mq {
-    &__contet {
-      position: static;
-      transform: translateX(0) !important; //必ず行うという指示
-      display: flex;
-      flex-direction: column;
-
+    &__content {
       &-nav {
+        text-align: start;
+        flex: 2;
         align-items: flex-start; //上端に揃える
-        text-align: start; //昔はleft rightだったが今は
-        padding: 0 15px; //左に寄せる
-
-        li {
-          margin-bottom: 1.5rem;
-        }
+        text-align: start;
 
         a {
-          font-size: 1rem; //初期設定の14pxに戻す
+          font-size: 1rem;
           position: relative; //afterのabsoluteの為にrelativeをかける
           display: inline-block; //テキストの下に余白を作るためblockレベル要素にするblockだけにすると横に要素のエリアが広がる
           padding-bottom: 3px;
@@ -258,56 +259,62 @@ h5 {
             height: 1px;
             width: 100%;
             position: absolute;
-            background-color: var(--color-primary);
+            background-color: var(--color-white);
             left: 0;
             bottom: 0;
             transform: scaleX(0);
             transition: transform 0.3s var(--easeing); //animetionを追加
-            transform-origin: right center; //
+            transform-origin: right center;
           }
 
-          //hoverした時の::after
           &:hover::after {
             transform: scaleX(1);
-            transform-origin: left center; //
+            transform-origin: left center;
           }
         }
-        &-sns {
-          justify-content: center;
-          align-items: flex-end;
-          padding-bottom: 30px;
 
+        &-shop {
           a {
-            // margin: 0 1rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            text-decoration: none;
+            color: var(--color-accent);
+            cursor: pointer;
+            transition: 0.5s;
+          }
+        }
+      }
 
-            &:hover::before {
-              scale: 1;
-            }
-            &::before {
-              transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
-              position: absolute;
-              inset: 0;
-              display: block;
-              content: '';
-              background: var(--color-accent);
-              border-radius: 50%;
-              z-index: -3;
-              scale: 0;
-              pointer-events: none;
-            }
+      &-sns {
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 30px;
+
+        a {
+          position: relative;
+          @include flex-center-column;
+          width: 2rem;
+          height: 2rem;
+          text-decoration: none;
+
+          &:hover::before {
+            scale: 1.2;
+          }
+          &::before {
+            transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+            position: absolute;
+            inset: -4px 0 4px 0;
+            display: block;
+            content: '';
+            background: var(--color-main);
+            border-radius: 50%;
+            z-index: -3;
+            scale: 0;
+            pointer-events: none;
           }
         }
       }
     }
   }
 }
+
 /* ------- ./ナビゲーション ------- */
 
 /* ------- ハンバーガーボタン ------- */
@@ -588,7 +595,7 @@ h5 {
   }
 }
 
-.producuts {
+.products {
   display: flex;
   flex-direction: column;
   &__wrapper {

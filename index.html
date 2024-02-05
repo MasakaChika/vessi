@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="カナダ発、防水性・軽量性・快適性を兼ね備えたシューズ" />
     <title>vessi</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png" />
+    <link rel="manifest" href="./img/site.webmanifest" />
+    <link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +28,6 @@
     <div class="layout">
       <!-- header -->
       <header class="site-header">
-        <!-- header nav -->
         <h1 class="site-header__logo">
           <a href="">
             <img src="./img/vessilogo_white.png" alt="vessi" />
@@ -60,11 +67,11 @@
       </ul>
       <!-- ./slide -->
 
+      <!-- scroll-container -->
       <div class="scroll-container">
-        <!-- main -->
         <main>
           <!-- main-visual -->
-          <section class="main-visual">
+          <section class="main-visual" id="top">
             <div class="main-visual__header">
               <img src="./img/vessisymbol_white.png" alt="" />
             </div>
@@ -79,7 +86,7 @@
           </section>
           <!-- main-visual end -->
           <!-- tec -->
-          <section class="tec section-container">
+          <section class="tec section-container" id="technology">
             <h3 class="section-title">technorogy</h3>
             <div class="tec__container">
               <div class="tec__container-top">
@@ -115,34 +122,34 @@
           <!-- background end -->
 
           <!-- producuts -->
-          <section class="producuts section-container">
+          <section class="products section-container" id="products">
             <h3 class="section-title">producuts</h3>
-            <div class="producuts__wrapper">
+            <div class="products__wrapper">
               <img src="./img/100_water_proof.svg" alt="" />
               <h4>100%防水</h4>
               <p>当社の Dyma-tex® テクノロジーにより、<br />水の浸入を防ぎ通気性を保ちます。<br />雪もぬかるみも泥もへっちゃらです。</p>
             </div>
-            <div class="producuts__wrapper">
+            <div class="products__wrapper">
               <img src="./img/cloud_like_comfort.svg" alt="" />
               <h4>雲のような快適さ</h4>
               <p>防水性だけではありません。<br />雲の上を歩くような心地よさも魅力。<br />靴を脱ぎたくなくなるかも。</p>
             </div>
-            <div class="producuts__wrapper">
+            <div class="products__wrapper">
               <img src="./img/lightweight.svg" alt="" />
               <h4>軽量</h4>
               <p>不格好なレインブーツに別れを告げましょう。<br />Vessi は非常に軽量なので、履いていることを忘れてしまうほどです。</p>
             </div>
-            <div class="producuts__wrapper">
+            <div class="products__wrapper">
               <img src="./img/vegan_material.svg" alt="" />
               <h4>ビーガン素材</h4>
               <p>私たちが作るものは、動物性製品を一切使用していないことをお約束します。</p>
             </div>
-            <div class="producuts__wrapper">
+            <div class="products__wrapper">
               <img src="./img/freeshipping.svg" alt="" />
               <h4>80ドル以上のご注文は通常配送無料</h4>
               <p>国際発送が不安ですか？<br />８０ドル以上のオーダー＋通常配送はVessi持ちです。</p>
             </div>
-            <div class="producuts__wrapper">
+            <div class="products__wrapper">
               <img src=".//img/90days_free_exchange.svg" alt="" />
               <h4>無料交換</h4>
               <p>サイズが何か違うと感じたら。。。<br />メールでご連絡いただければ、９０日以内であれば無償で交換の手続きをさせていただきます。</p>
@@ -157,7 +164,7 @@
           <!-- background end -->
 
           <!-- line up -->
-          <section class="lineup section-container">
+          <section class="lineup section-container" id="lineup">
             <h3 class="section-title">line up</h3>
             <!-- swiper -->
             <div class="lineup__item swiper mySwiper">
@@ -263,7 +270,7 @@
           <!-- background end -->
 
           <!-- story -->
-          <section class="story section-container">
+          <section class="story section-container" id="story">
             <h3 class="section-title">story</h3>
             <h4 class="section-subtitle">Vessiの創設</h4>
             <div class="story__container">
@@ -298,14 +305,14 @@
 
           <!-- online-shop -->
           <div class="online-shop">
-            <a href="#">
-              <img src="img/onlineshop.png" alt="onlineshop" />
-            </a>
+            <div class="btn">
+              <a href="#"><span>online shop</span></a>
+            </div>
           </div>
           <!-- online-shop end -->
 
           <!-- FAQ -->
-          <section class="faq section-container">
+          <section class="faq section-container" id="faq">
             <h3 class="section-title">faq</h3>
             <div class="faq__container">
               <button class="faq__button"><img class="faq__open" src="./img/dashicons--arrow-down.svg" alt="toggle" />本当に100％防水ですか？</button>
@@ -376,24 +383,25 @@
           <!-- ./footer -->
         </main>
       </div>
+      <!-- ./scroll-container -->
 
       <!-- nav -->
-      <div class="site-nav__content site-nav__container">
+      <div class="site-nav__container site-nav__content">
         <nav class="site-nav__content-nav">
           <ul>
-            <li><a href="#">top</a></li>
-            <li><a href="#">technology</a></li>
-            <li><a href="#">producuts</a></li>
-            <li><a href="#">line up</a></li>
-            <li><a href="#">story</a></li>
-            <li><a href="#">faq</a></li>
+            <li><a href="#top">top</a></li>
+            <li><a href="#technology">technology</a></li>
+            <li><a href="#products">producuts</a></li>
+            <li><a href="#lineup">line up</a></li>
+            <li><a href="#story">story</a></li>
+            <li><a href="#faq">faq</a></li>
             <li><a href="#">customer</a></li>
           </ul>
         </nav>
         <div class="site-nav__content-shop">
-          <a href="#">
-            <img src="img/onlineshop.png" alt="onlineshop" />
-          </a>
+          <div class="btn">
+            <a href="#"><span>online shop</span></a>
+          </div>
         </div>
         <div class="site-nav__content-sns">
           <a href="https://www.facebook.com/vessifootwear" target="_blank"> <img src="./img/ic--baseline-facebook.svg" alt="facebook" /></a>

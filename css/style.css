@@ -47,6 +47,7 @@ ol {
   list-style: none;
 }
 
+/* ------- 格納用コンテナ ------- */
 .scroll-container {
   background: var(--color-background);
   max-width: var(--container-width);
@@ -59,6 +60,7 @@ ol {
   }
 }
 
+/* ------- 各セクション共通スタイル ------- */
 .section-container {
   max-width: var(--container-width);
   padding: 200px 24px;
@@ -86,12 +88,38 @@ h5 {
   font-size: 1rem;
 }
 
+/* ------- Desktop用の設定 ------- */
 @media screen and (min-width: 768px) {
   .layout {
     display: flex;
   }
 }
-/* ------- ヘッダー ------- */
+/* ------- online shop ------- */
+.btn {
+  text-align: center;
+}
+.btn span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 80px;
+  background: var(--color-main);
+  color: #fff;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.btn span:hover {
+  background: var(--color-accent);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* ------- ヘッダー・ロゴ ------- */
 .site-header {
   left: 0;
   top: 0;
@@ -109,7 +137,7 @@ h5 {
   color: var(--color-white);
   font-size: 1.3rem;
   font-weight: 300;
-  letter-spacing: 3px;
+  letter-spacing: 0.2em;
 }
 @media screen and (min-width: 768px) {
   .site-header {
@@ -128,6 +156,9 @@ h5 {
     top: 0;
     left: 0;
     margin: 24px;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.5em;
   }
 }
 
@@ -142,10 +173,8 @@ h5 {
 }
 @media screen and (min-width: 768px) {
   .site-nav__container {
-    position: fixed;
     width: 300px;
     height: 100vh;
-    top: 0;
     right: 300px;
     left: auto;
   }
@@ -154,27 +183,22 @@ h5 {
 /* ------- ナビゲーション ------- */
 .site-nav__content {
   background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  transform: translateX(100%);
+  transition: 0.6s var(--easeing);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  transform: translateX(100%);
-  transition: 0.8s var(--easeing);
 }
 .site-nav-checkbox:checked ~ .site-nav__content {
   transform: translateX(0);
 }
 .site-nav__content-nav {
+  margin-top: 100px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .site-nav__content-nav li {
   margin-bottom: 2rem;
-}
-.site-nav__content-nav li:last-child {
-  margin-bottom: 0;
 }
 .site-nav__content-nav li a {
   color: var(--color-white);
@@ -184,89 +208,80 @@ h5 {
   letter-spacing: 3px;
   font-weight: 400;
 }
-@media screen and (min-width: 768px) {
-  .site-nav__content-nav {
-    text-align: start;
-  }
-}
 .site-nav__content-shop {
-  display: flex;
-  justify-content: center;
-  margin: 2rem auto;
+  margin: 2rem;
 }
 .site-nav__content-shop img {
   width: 140px;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
 }
 .site-nav__content-sns {
+  margin: 60px 40px 0;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex: 0.5;
 }
 .site-nav__content-sns img {
   width: 24px;
 }
 @media screen and (min-width: 768px) {
-  .site-nav__contet {
-    position: static;
-    transform: translateX(0) !important;
-    display: flex;
-    flex-direction: column;
-  }
-  .site-nav__contet-nav {
+  .site-nav__content-nav {
+    text-align: start;
+    flex: 2;
     align-items: flex-start;
     text-align: start;
-    padding: 0 15px;
   }
-  .site-nav__contet-nav li {
-    margin-bottom: 1.5rem;
-  }
-  .site-nav__contet-nav a {
+  .site-nav__content-nav a {
     font-size: 1rem;
     position: relative;
     display: inline-block;
     padding-bottom: 3px;
   }
-  .site-nav__contet-nav a::after {
+  .site-nav__content-nav a::after {
     content: "";
     height: 1px;
     width: 100%;
     position: absolute;
-    background-color: var(--color-primary);
+    background-color: var(--color-white);
     left: 0;
     bottom: 0;
     transform: scaleX(0);
     transition: transform 0.3s var(--easeing);
     transform-origin: right center;
   }
-  .site-nav__contet-nav a:hover::after {
+  .site-nav__content-nav a:hover::after {
     transform: scaleX(1);
     transform-origin: left center;
   }
-  .site-nav__contet-nav-sns {
+  .site-nav__content-nav-shop a {
+    color: var(--color-accent);
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .site-nav__content-sns {
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 30px;
   }
-  .site-nav__contet-nav-sns a {
+  .site-nav__content-sns a {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 2rem;
     height: 2rem;
     text-decoration: none;
   }
-  .site-nav__contet-nav-sns a:hover::before {
-    scale: 1;
+  .site-nav__content-sns a:hover::before {
+    scale: 1.2;
   }
-  .site-nav__contet-nav-sns a::before {
+  .site-nav__content-sns a::before {
     transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
     position: absolute;
-    inset: 0;
+    inset: -4px 0 4px 0;
     display: block;
     content: "";
-    background: var(--color-accent);
+    background: var(--color-main);
     border-radius: 50%;
     z-index: -3;
     scale: 0;
@@ -524,11 +539,11 @@ h5 {
   font-size: 14px;
 }
 
-.producuts {
+.products {
   display: flex;
   flex-direction: column;
 }
-.producuts__wrapper {
+.products__wrapper {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -536,17 +551,17 @@ h5 {
   justify-content: center;
   margin-bottom: 80px;
 }
-.producuts__wrapper:last-child {
+.products__wrapper:last-child {
   margin-bottom: 0;
 }
-.producuts__wrapper img {
+.products__wrapper img {
   width: 100px;
   margin: 24px 0;
 }
-.producuts__wrapper h4 {
+.products__wrapper h4 {
   margin-bottom: 1rem;
 }
-.producuts__wrapper p {
+.products__wrapper p {
   font-size: 0.975rem;
 }
 
@@ -697,9 +712,10 @@ h5 {
   --font-primary: "Noto Sans JP", sans-serif;
   --color-background: rgba(246, 246, 246, 0.9);
   --color-text: #2c2c2c;
-  --color-accent: #cd6799;
+  --color-accent: #847484;
   --color-main: #005864;
   --color-box: #d9d9d9;
   --color-white: #fffeff;
   --container-width: 390px;
+  --easeing: cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }/*# sourceMappingURL=style.css.map */
