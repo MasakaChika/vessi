@@ -27,9 +27,9 @@ html {
 main {
   margin: 0 auto;
   padding: 0;
-  @include mq {
-    max-width: var(--container-width);
-  }
+  // @include mq {
+  //   max-width: var(--container-width);
+  // }
 }
 
 h1,
@@ -92,6 +92,8 @@ h5 {
 /* ------- Desktop用の設定 ------- */
 @include mq {
   .layout {
+    width: 100%;
+    height: 100%;
     display: flex;
   }
 }
@@ -114,11 +116,14 @@ h5 {
     letter-spacing: 0.2em;
     text-decoration: none;
     text-transform: uppercase;
+    box-shadow: (5px 5px 10px rgba(0, 0, 0, 0.4));
 
-    &:hover {
-      background: var(--color-accent);
-      cursor: pointer;
-      transition: 0.5s;
+    @include mq {
+      &:hover {
+        background: var(--color-accent);
+        cursor: pointer;
+        transition: 0.5s;
+      }
     }
   }
 }
@@ -237,10 +242,6 @@ h5 {
 
     &-shop {
       margin: 2rem;
-      img {
-        width: 140px;
-        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
-      }
     }
 
     &-sns {
@@ -685,20 +686,6 @@ h5 {
   display: block;
   margin: 0 auto;
 }
-// .swiper-slide {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-//   height: 100%;
-
-//   img {
-//     display: block;
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-// }
 
 //onlineshop
 .online-shop {
@@ -711,13 +698,6 @@ h5 {
   height: 200px;
   position: relative; //不要レイアウト変化なし
   align-items: center;
-
-  img {
-    position: absolute;
-    width: 140px;
-    left: 32px;
-    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.7));
-  }
 }
 
 //story
