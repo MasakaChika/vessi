@@ -45,7 +45,7 @@ ol {
 .scroll-container {
   background: var(--color-background);
   max-width: var(--container-width);
-  animation: fadein 2s ease-in forwards;
+  animation: fadein 4s ease-in forwards;
 }
 @media screen and (min-width: 768px) {
   .scroll-container {
@@ -57,7 +57,7 @@ ol {
 
 @keyframes fadein {
   0% {
-    transform: translateY(110vh);
+    transform: translateY(90vh);
   }
   100% {
     transform: translateY(0);

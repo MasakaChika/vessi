@@ -56,12 +56,12 @@ ol {
     right: 300px;
   }
 
-  animation: fadein 2s ease-in forwards;
+  animation: fadein 4s ease-in forwards;
 }
 
 @keyframes fadein {
   0% {
-    transform: translateY(110vh);
+    transform: translateY(90vh);
   }
 
   100% {
