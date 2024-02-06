@@ -652,19 +652,6 @@ h5 {
   margin: 0 auto;
 }
 
-/* ------- onlineshop ------- */
-.online-shop {
-  display: flex;
-  margin: 0 auto;
-  background: url(../img/bg_warter.webp);
-  background-size: cover;
-  background-position: center;
-  width: 100%; //不要レイアウト変化なし
-  height: 200px;
-  position: relative; //不要レイアウト変化なし
-  align-items: center;
-}
-
 /* ------- story ------- */
 .story {
   &__container {
@@ -743,7 +730,7 @@ h5 {
 /* ------- Footer ------- */
 .site-footer {
   width: 100%;
-  height: 400px;
+  height: 200px;
   background: var(--color-main);
   @include flex-center-center;
   text-align: center; // テキストを中央揃え
