@@ -227,8 +227,9 @@ h5 {
   transform: translateX(0);
 }
 .site-nav__content-nav {
-  margin-top: 100px;
+  margin-top: 50px;
   text-align: center;
+  flex: 1;
 }
 .site-nav__content-nav li {
   margin-bottom: 2rem;
