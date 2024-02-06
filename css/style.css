@@ -50,6 +50,10 @@ button {
   appearance: none;
 }
 
+:target {
+  scroll-margin-top: -150px;
+}
+
 /* ------- 格納用コンテナ ------- */
 .scroll-container {
   background: var(--color-background);
