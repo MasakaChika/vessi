@@ -227,7 +227,7 @@ h5 {
   transform: translateX(0);
 }
 .site-nav__content-nav {
-  margin-top: 50px;
+  margin-top: 40px;
   text-align: center;
   flex: 1;
 }
@@ -243,7 +243,7 @@ h5 {
   font-weight: 400;
 }
 .site-nav__content-shop {
-  margin: 2rem;
+  margin: 1rem;
   flex: 1;
 }
 .site-nav__content-sns {
