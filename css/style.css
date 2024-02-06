@@ -43,6 +43,11 @@ ol {
 
 button {
   text-decoration: none;
+  color: var(--color-text);
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* ------- 格納用コンテナ ------- */
@@ -134,9 +139,9 @@ h5 {
 /* ------- To top  ------- */
 .to-top {
   position: fixed;
-  bottom: 20px; /* 下端から20pxの位置 */
-  right: 30px; /* 右端から20pxの位置 */
-  z-index: 200; /* 他の要素の上に表示 */
+  bottom: 20px;
+  right: 30px;
+  z-index: 200;
 }
 .to-top img {
   width: 24px;
@@ -190,7 +195,7 @@ h5 {
   }
 }
 
-/* ------- ナビゲーション ------- */
+/* ------- ナビゲーションコンテナ ------- */
 .site-nav__container {
   position: fixed;
   width: 100%;
@@ -302,7 +307,7 @@ h5 {
   }
   .site-nav__content-sns a::before {
     content: "";
-    transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+    transition: scale 0.6s var(--easeing) 0s;
     position: absolute;
     inset: -4px 0 4px 0;
     display: block;
@@ -314,7 +319,6 @@ h5 {
   }
 }
 
-/* ------- ./ナビゲーション ------- */
 /* ------- ハンバーガーボタン ------- */
 .site-nav-toggle {
   position: fixed;
@@ -368,7 +372,6 @@ h5 {
   display: none;
 }
 
-/* ------- ./ハンバーガーボタン ------- */
 /* ------- slide ------- */
 .slide {
   visibility: visible !important;
@@ -392,7 +395,7 @@ h5 {
   }
 }
 
-/* ------- ./slide ------- */
+/* ------- main-visual=>TOP ------- */
 .main-visual {
   position: relative;
   z-index: 2;
@@ -471,6 +474,7 @@ h5 {
   }
 }
 
+/* ------- Technology ------- */
 .tec__container {
   margin-top: 64px;
 }
@@ -505,6 +509,7 @@ h5 {
   font-size: 14px;
 }
 
+/* ------- products ------- */
 .products {
   display: flex;
   flex-direction: column;
@@ -591,6 +596,7 @@ h5 {
   margin: 0 auto;
 }
 
+/* ------- onlineshop ------- */
 .online-shop {
   display: flex;
   margin: 0 auto;
@@ -603,6 +609,7 @@ h5 {
   align-items: center;
 }
 
+/* ------- story ------- */
 .story__container {
   display: flex;
   flex-direction: column;
@@ -627,6 +634,7 @@ h5 {
   margin: 32px 0;
 }
 
+/* ------- FAQ ------- */
 .faq__content {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -658,7 +666,6 @@ h5 {
   font-size: 1.2rem;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
-  text-decoration: none;
 }
 .faq__open {
   transform: rotate(-90deg);
@@ -704,5 +711,5 @@ h5 {
   --color-box: #d9d9d9;
   --color-white: #fffeff;
   --container-width: 390px;
-  --easeing: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  --easeing: cubic-bezier(0.215, 0.61, 0.355, 1);
 }/*# sourceMappingURL=style.css.map */
