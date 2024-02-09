@@ -402,6 +402,7 @@ h5 {
   position: relative;
   z-index: 2;
   max-width: var(--container-width);
+  background-image: url(../img/mv-sp.jpg);
   height: 100vh;
   left: 0;
   top: 0;
@@ -430,11 +431,13 @@ h5 {
   font-size: 2rem;
   letter-spacing: 0.3em;
   margin-bottom: 1rem;
+  color: var(--color-white);
 }
 .main-visual__title p {
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
+  color: var(--color-white);
 }
 .main-visual__scroll {
   position: absolute;
@@ -448,6 +451,7 @@ h5 {
   letter-spacing: 0.2em;
   font-size: 0.7rem;
   text-transform: uppercase;
+  color: var(--color-white);
 }
 .main-visual__scroll-line {
   position: absolute;
@@ -473,6 +477,18 @@ h5 {
   }
   100% {
     transform: translateY(100%);
+  }
+}
+@media screen and (min-width: 768px) {
+  .main-visual {
+    background-image: none;
+  }
+  .main-visual__title h2,
+  .main-visual__title p {
+    color: var(--color-text);
+  }
+  .main-visual__scroll-text {
+    color: var(--color-text);
   }
 }
 
