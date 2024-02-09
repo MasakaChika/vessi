@@ -96,6 +96,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+/*
+document.addEventListener('DOMContentLoaded', () => {
+  // 通常のセクション用のObserver
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const navLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+        if (entry.isIntersecting) {
+          navLink.classList.add('active');
+        } else {
+          navLink.classList.remove('active');
+        }
+      });
+    },
+    {
+      rootMargin: '-50% 0px -50% 0px',
+    }
+  );
+
+  // #topセクション用のObserver
+  const topObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const navLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+        if (entry.isIntersecting) {
+          navLink.classList.add('active');
+        } else {
+          navLink.classList.remove('active');
+        }
+      });
+    },
+    {
+      rootMargin: '0% 0px', // ここで#top用のrootMarginを変更
+    }
+  );
+
+  // 監視対象のセクションを追加
+  document.querySelectorAll('section').forEach((section) => {
+    if (section.id === 'top') {
+      topObserver.observe(section); // #topだけ別のObserverで監視
+    } else {
+      observer.observe(section);
+    }
+  });
+});
+*/
 //aos設定
 AOS.init({
   offset: 0,

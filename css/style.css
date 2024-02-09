@@ -56,7 +56,7 @@ button {
 
 /* ------- 格納用コンテナ ------- */
 .scroll-container {
-  background: var(--color-background-sp);
+  background: var(--color-background);
   max-width: var(--container-width);
   animation: fadein 2s ease-in forwards;
 }
@@ -64,7 +64,7 @@ button {
   .scroll-container {
     display: flex;
     position: absolute;
-    background: var(--color-background-pc);
+    background: var(--color-background);
     right: 300px;
   }
 }
@@ -697,8 +697,7 @@ h5 {
 
 :root {
   --font-primary: "Noto Sans JP", sans-serif;
-  --color-background-pc: rgba(246, 246, 246, 0.9);
-  --color-background-sp: rgba(246, 246, 246, 0.6);
+  --color-background: rgba(246, 246, 246, 0.8);
   --color-text: #2c2c2c;
   --color-accent: #847484;
   --color-main: #005864;
