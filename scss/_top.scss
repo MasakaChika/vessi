@@ -56,12 +56,13 @@ button {
 }
 /* ------- 格納用コンテナ ------- */
 .scroll-container {
-  background: var(--color-background);
+  background: var(--color-background-sp);
   max-width: var(--container-width);
 
   @include mq {
     display: flex;
     position: absolute;
+    background: var(--color-background-pc);
     right: 300px; //ナビゲーション分
   }
 
