@@ -121,14 +121,15 @@ h5 {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
-  height: 80px;
+  min-width: 240px;
+  min-height: 60px;
   background: var(--color-main);
+  transition: background-color 0.6s var(--easeing), color 0.6s var(--easeing);
   color: var(--color-white);
   border-radius: 16px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-decoration: none;
   text-transform: uppercase;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
@@ -137,7 +138,7 @@ h5 {
   .btn span:hover {
     background: var(--color-accent);
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.6s var(--easeing) 0s;
   }
 }
 
@@ -242,7 +243,7 @@ h5 {
 .site-nav__content-nav li a {
   color: var(--color-white);
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
   font-weight: 400;
@@ -288,11 +289,6 @@ h5 {
   .site-nav__content-nav a:hover::after, .site-nav__content-nav a.active::after {
     transform: scaleX(1);
     transform-origin: left center;
-  }
-  .site-nav__content-nav-shop a {
-    color: var(--color-accent);
-    cursor: pointer;
-    transition: 0.5s;
   }
   .site-nav__content-sns {
     justify-content: center;

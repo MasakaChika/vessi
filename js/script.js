@@ -73,6 +73,28 @@ console.log(date.getFullYear()); //年を取得
 console.log(date.getDay()); //曜日を取得
 console.log(date.getHours()); //時を取得
 
+/* ------- aos設定 ------- */
+AOS.init({
+  offset: 0,
+});
+
+/* ------- 2回目以降アニメーションなし ------- */
+document.addEventListener('DOMContentLoaded', function () {
+  const visited = localStorage.getItem('visited');
+  const scrollContainer = document.querySelector('.scroll-container');
+
+  if (!visited) {
+    // ユーザーが初めて訪れた場合、アニメーションを有効にする
+    scrollContainer.style.animation = 'fadein 2s ease-in forwards';
+    // 訪問済みとしてローカルストレージに記録
+    localStorage.setItem('visited', 'true');
+  } else {
+    // 既に訪れたことがあるユーザーの場合、アニメーションを無効にする
+    scrollContainer.style.opacity = '1'; // アニメーションの代わりに即座に表示
+  }
+});
+
+/*
 //セクション表示状態の監視
 document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver(
@@ -95,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
 });
+*/
 
-/*
 document.addEventListener('DOMContentLoaded', () => {
   // 通常のセクション用のObserver
   const observer = new IntersectionObserver(
@@ -140,24 +162,4 @@ document.addEventListener('DOMContentLoaded', () => {
       observer.observe(section);
     }
   });
-});
-*/
-//aos設定
-AOS.init({
-  offset: 0,
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  const visited = localStorage.getItem('visited');
-  const scrollContainer = document.querySelector('.scroll-container');
-
-  if (!visited) {
-    // ユーザーが初めて訪れた場合、アニメーションを有効にする
-    scrollContainer.style.animation = 'fadein 2s ease-in forwards';
-    // 訪問済みとしてローカルストレージに記録
-    localStorage.setItem('visited', 'true');
-  } else {
-    // 既に訪れたことがあるユーザーの場合、アニメーションを無効にする
-    scrollContainer.style.opacity = '1'; // アニメーションの代わりに即座に表示
-  }
 });
