@@ -146,3 +146,18 @@ document.addEventListener('DOMContentLoaded', () => {
 AOS.init({
   offset: 0,
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const visited = localStorage.getItem('visited');
+  const scrollContainer = document.querySelector('.scroll-container');
+
+  if (!visited) {
+    // ユーザーが初めて訪れた場合、アニメーションを有効にする
+    scrollContainer.style.animation = 'fadein 2s ease-in forwards';
+    // 訪問済みとしてローカルストレージに記録
+    localStorage.setItem('visited', 'true');
+  } else {
+    // 既に訪れたことがあるユーザーの場合、アニメーションを無効にする
+    scrollContainer.style.opacity = '1'; // アニメーションの代わりに即座に表示
+  }
+});
