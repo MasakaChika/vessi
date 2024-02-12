@@ -218,7 +218,7 @@ h5 {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 400;
 
   @include mq {
     width: 300px;
@@ -350,7 +350,7 @@ h5 {
   position: fixed;
   width: 60px;
   height: 60px;
-  z-index: 300; //手前に持ってくる
+  z-index: 500; //手前に持ってくる
   top: 14px; //上からの位置
   right: 14px; //右からの位置
   @include flex-center-center;
@@ -602,6 +602,8 @@ h5 {
 
     p {
       font-size: 0.975rem;
+      letter-spacing: 0.2em;
+      line-height: 1.6;
     }
   }
 }
